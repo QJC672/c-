@@ -139,11 +139,13 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Publisher.cpp" />
     <ClCompile Include="RosSimulator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Message.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Publisher.h" />
     <ClInclude Include="ROS.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
