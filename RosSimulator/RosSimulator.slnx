@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="RosSimulator/RosSimulator.vcxproj" />
+  <Project Path="RosSimulator/RosSimulator.vcxproj" Id="d59fa5ff-8631-4379-943c-cc7cb99dc911" />
 </Solution>
