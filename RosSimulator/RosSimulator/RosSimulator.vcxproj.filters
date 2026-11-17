@@ -21,6 +21,9 @@
     <ClCompile Include="Publisher.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Subscriber.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Message.h">
@@ -33,6 +36,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Publisher.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Subscriber.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

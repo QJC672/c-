@@ -141,12 +141,14 @@
   <ItemGroup>
     <ClCompile Include="Publisher.cpp" />
     <ClCompile Include="RosSimulator.cpp" />
+    <ClCompile Include="Subscriber.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Message.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Publisher.h" />
     <ClInclude Include="ROS.h" />
+    <ClInclude Include="Subscriber.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
