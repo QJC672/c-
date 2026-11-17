@@ -26,5 +26,8 @@
     <ClInclude Include="Node.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ROS.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
