@@ -24,6 +24,9 @@
     <ClCompile Include="Subscriber.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ROS.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Message.h">

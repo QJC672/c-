@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Publisher.cpp" />
+    <ClCompile Include="ROS.cpp" />
     <ClCompile Include="RosSimulator.cpp" />
     <ClCompile Include="Subscriber.cpp" />
   </ItemGroup>
