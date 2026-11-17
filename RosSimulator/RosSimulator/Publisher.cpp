@@ -22,6 +22,7 @@ void Publisher::Publish(const std::string& data)
         return;
     }
     Message msg(data);
+    std::cout << "[INFO ] " << GetName() << " ·¢²¼ -> " << topic_ << " : " << data << std::endl;
     ROS::GetInstance().Publish(topic_, msg);
 }
 
