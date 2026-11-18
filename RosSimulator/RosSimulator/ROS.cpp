@@ -3,6 +3,7 @@
 #include "Subscriber.h"
 #include "Message.h"
 #include <iostream>
+#include "Logger.h"
 #include <algorithm>
 #include "exceptions.h"
 
@@ -85,8 +86,8 @@ void ROS::Publish(const std::string& topic, const Message& msg)
     auto it = subscribers_.find(topic);
 
     if (it == subscribers_.end() || it->second.empty()) {
-        std::cout << "[WARN ] 话题 " << topic
-            << " 暂无订阅者，消息丢弃: " << msg.GetContent() << std::endl;
+        Logger::GetInstance().Log("WARN ",
+            "话题 " + topic + " 暂无订阅者，消息丢弃: " + msg.GetContent());
         return;
     }
 
@@ -117,5 +118,5 @@ void ROS::ShutdownAll()
 
     publishers_.clear();
     subscribers_.clear();
-    std::cout << "[INFO ] 中枢已关闭，注册表已清空" << std::endl;
+    Logger::GetInstance().Log("INFO ", "中枢已关闭，注册表已清空");
 }
