@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <string>
 #include <fstream>
@@ -26,6 +26,11 @@ public:
         static Logger inst;
         return inst;
     }
+
+    // 分级便捷接口：Logger::GetInstance().Info("...") 等
+    void Info(const std::string& msg)  { Log("INFO ", msg); }
+    void Warn(const std::string& msg)  { Log("WARN ", msg); }
+    void Error(const std::string& msg) { Log("ERROR", msg); }
 
     void Log(const std::string& level, const std::string& msg)
     {

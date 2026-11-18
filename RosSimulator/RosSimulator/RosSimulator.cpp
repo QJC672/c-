@@ -6,6 +6,8 @@
 #include "Publisher.h"
 #include "Subscriber.h"
 #include "ROS.h"
+#include "TemperatureMessage.h"
+#include "Logger.h"
 
 int main()
 {
@@ -15,7 +17,13 @@ int main()
 
     Subscriber tempDisplay("温度显示器A", "sensor/temperature",
         [](const Message& m) {
-            std::cout << "    -> 显示器A 处理: " << m.GetContent() << std::endl;
+            if (const auto* t = dynamic_cast<const TemperatureMessage*>(&m)) {
+                std::cout << "    -> 显示器A 处理: " << t->GetValue() << " " << t->GetUnit()
+                          << (t->GetValue() > 25 ? " (高温!)" : " (正常)") << std::endl;
+            }
+            else {
+                std::cout << "    -> 显示器A 处理: " << m.GetContent() << std::endl;
+            }
         });
 
     Subscriber tempRecorder("温度记录器B", "sensor/temperature",
@@ -37,7 +45,7 @@ int main()
     presPub.Init();
 
     for (int i = 1; i <= 3; ++i) {
-        tempPub.Publish(std::to_string(20 + i) + "." + std::to_string(i) + " C");
+        tempPub.Publish(TemperatureMessage(20 + i + i / 10.0, "C"));
         humPub.Publish(std::to_string(40 + i) + " %");
         std::this_thread::sleep_for(std::chrono::milliseconds(400));
     }
@@ -53,7 +61,7 @@ int main()
         std::cout << "这行不该出现" << std::endl;
     }
     catch (const RosException& e) {
-        std::cout << "[ERROR] 已拦截 -> " << e.what() << std::endl;
+        Logger::GetInstance().Error(std::string("已拦截 -> ") + e.what());
     }
 
     // 2：空消息内容
@@ -61,7 +69,7 @@ int main()
         tempPub.Publish("");
     }
     catch (const RosException& e) {
-        std::cout << "[ERROR] 已拦截 -> " << e.what() << std::endl;
+        Logger::GetInstance().Error(std::string("已拦截 -> ") + e.what());
     }
 
     // 3：重复注册
@@ -69,7 +77,7 @@ int main()
         tempPub.Init();
     }
     catch (const RosException& e) {
-        std::cout << "[ERROR] 已拦截 -> " << e.what() << std::endl;
+        Logger::GetInstance().Error(std::string("已拦截 -> ") + e.what());
     }
 
     ROS::GetInstance().ShutdownAll();

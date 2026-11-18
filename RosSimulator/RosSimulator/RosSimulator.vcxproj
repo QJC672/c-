@@ -152,6 +152,7 @@
     <ClInclude Include="Publisher.h" />
     <ClInclude Include="ROS.h" />
     <ClInclude Include="Subscriber.h" />
+    <ClInclude Include="TemperatureMessage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

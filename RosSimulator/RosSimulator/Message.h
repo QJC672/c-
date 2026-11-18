@@ -20,6 +20,8 @@ public:
     const std::string& GetContent() const { return content_; }
     const std::string& GetTimestamp() const { return timestamp_; }
 
+    virtual ~Message() = default;   // 虚析构：允许派生消息类型被正确析构
+
 private:
     static std::string Now()
     {

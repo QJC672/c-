@@ -18,12 +18,16 @@ void Publisher::Init()
 
 void Publisher::Publish(const std::string& data)
 {
+    Publish(Message(data));        // 复用重载版本：字符串先包装成 Message
+}
+
+void Publisher::Publish(const Message& msg)
+{
     if (!IsInitialized()) {
         Logger::GetInstance().Log("WARN ", GetName() + " 尚未 Init，消息被丢弃");
         return;
     }
-    Message msg(data);
-    Logger::GetInstance().Log("INFO ", GetName() + " 发布 -> " + topic_ + " : " + data);
+    Logger::GetInstance().Log("INFO ", GetName() + " 发布 -> " + topic_ + " : " + msg.GetContent());
     ROS::GetInstance().Publish(topic_, msg);
 }
 
