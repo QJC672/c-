@@ -5,12 +5,16 @@
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+#include "exceptions.h"
 
 class Message {
 public:
     explicit Message(const std::string& content)
         : content_(content), timestamp_(Now())
     {
+        if (content_.empty()) {
+            throw MessageException("消息内容不能为空");
+        }
     }
 
     const std::string& GetContent() const { return content_; }

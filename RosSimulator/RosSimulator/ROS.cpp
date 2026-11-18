@@ -3,8 +3,8 @@
 #include "Subscriber.h"
 #include "Message.h"
 #include <iostream>
-#include <stdexcept>
 #include <algorithm>
+#include "exceptions.h"
 
 ROS& ROS::GetInstance()
 {
@@ -15,17 +15,17 @@ ROS& ROS::GetInstance()
 void ROS::RegisterPublisher(const std::string& topic, Publisher* p)
 {
     if (topic.empty()) {
-        throw std::invalid_argument("话题名不能为空");
+        throw TopicException("话题名不能为空");
     }
     if (p == nullptr) {
-        throw std::invalid_argument("发布者指针不能为空");
+        throw NodeException("发布者指针不能为空");
     }
 
     std::vector<Publisher*>& list = publishers_[topic];
 
     for (Publisher* item : list) {
         if (item == p) {
-            throw std::invalid_argument("同一发布者不能重复注册同一话题");
+            throw NodeException("同一发布者不能重复注册同一话题");
         }
     }
     list.push_back(p);
@@ -34,17 +34,17 @@ void ROS::RegisterPublisher(const std::string& topic, Publisher* p)
 void ROS::RegisterSubscriber(const std::string& topic, Subscriber* s)
 {
     if (topic.empty()) {
-        throw std::invalid_argument("话题名不能为空");
+        throw TopicException("话题名不能为空");
     }
     if (s == nullptr) {
-        throw std::invalid_argument("订阅者指针不能为空");
+        throw NodeException("订阅者指针不能为空");
     }
 
     std::vector<Subscriber*>& list = subscribers_[topic];
 
     for (Subscriber* item : list) {
         if (item == s) {
-            throw std::invalid_argument("同一订阅者不能重复注册同一话题");
+            throw NodeException("同一订阅者不能重复注册同一话题");
         }
     }
     list.push_back(s);

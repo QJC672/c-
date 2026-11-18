@@ -44,6 +44,34 @@ int main()
 
     presPub.Publish("1013 hPa");
 
+    // 异常演示
+    std::cout << "\n===== 异常处理演示 =====" << std::endl;
+
+    // 1：空节点名
+    try {
+        Publisher badNode("", "sensor/x");
+        std::cout << "这行不该出现" << std::endl;
+    }
+    catch (const RosException& e) {
+        std::cout << "[ERROR] 已拦截 -> " << e.what() << std::endl;
+    }
+
+    // 2：空消息内容
+    try {
+        tempPub.Publish("");
+    }
+    catch (const RosException& e) {
+        std::cout << "[ERROR] 已拦截 -> " << e.what() << std::endl;
+    }
+
+    // 3：重复注册
+    try {
+        tempPub.Init();
+    }
+    catch (const RosException& e) {
+        std::cout << "[ERROR] 已拦截 -> " << e.what() << std::endl;
+    }
+
     ROS::GetInstance().ShutdownAll();
 
     return 0;

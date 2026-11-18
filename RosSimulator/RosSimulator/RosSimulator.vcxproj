@@ -145,6 +145,7 @@
     <ClCompile Include="Subscriber.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="exceptions.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Publisher.h" />

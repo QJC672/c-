@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <stdexcept>
+#include "exceptions.h"
 
 class Node {
 public:
@@ -9,7 +9,7 @@ public:
         : name_(name), initialized_(false)
     {
         if (name.empty()) {
-            throw std::invalid_argument("节点名不能为空");
+            throw NodeException("节点名不能为空");
         }
     }
 

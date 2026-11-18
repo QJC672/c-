@@ -44,5 +44,8 @@
     <ClInclude Include="Subscriber.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="exceptions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
