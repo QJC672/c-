@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 
 #include <string>
 #include <map>
 #include <vector>
 
-//Ç°ÖÃËµÃ÷
+//å‰ç½®è¯´æ˜
 class Publisher;
 class Subscriber;
 class Message;

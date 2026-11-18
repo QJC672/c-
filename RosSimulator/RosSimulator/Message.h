@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <string>
 #include <chrono>
@@ -13,14 +13,14 @@ public:
         : content_(content), timestamp_(Now())
     {
         if (content_.empty()) {
-            throw MessageException("ÏûÏ¢ÄÚÈİ²»ÄÜÎª¿Õ");
+            throw MessageException("æ¶ˆæ¯å†…å®¹ä¸èƒ½ä¸ºç©º");
         }
     }
 
     const std::string& GetContent() const { return content_; }
     const std::string& GetTimestamp() const { return timestamp_; }
 
-    virtual ~Message() = default;   // ĞéÎö¹¹£ºÔÊĞíÅÉÉúÏûÏ¢ÀàĞÍ±»ÕıÈ·Îö¹¹
+    virtual ~Message() = default;   // è™šææ„ï¼šå…è®¸æ´¾ç”Ÿæ¶ˆæ¯ç±»å‹è¢«æ­£ç¡®ææ„
 
 private:
     static std::string Now()

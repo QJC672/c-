@@ -1,4 +1,4 @@
-#include "Subscriber.h"
+Ôªø#include "Subscriber.h"
 #include "ROS.h"
 #include <iostream>
 #include "Logger.h"
@@ -12,13 +12,13 @@ void Subscriber::Init()
 {
     ROS::GetInstance().RegisterSubscriber(topic_, this);
     SetInitialized(true);
-    Logger::GetInstance().Log("INFO ", GetName() + " ∂©‘ƒ¡À " + topic_);
+    Logger::GetInstance().Log("INFO ", GetName() + " ËÆ¢ÈòÖ‰∫Ü " + topic_);
 }
 
 void Subscriber::OnMessage(const Message& msg)
 {
     Logger::GetInstance().Log("INFO ",
-        "[" + msg.GetTimestamp() + "] " + GetName() + "  ’µΩ: " + msg.GetContent());
+        "[" + msg.GetTimestamp() + "] " + GetName() + " Êî∂Âà∞: " + msg.GetContent());
 
     if (callback_) {
         callback_(msg);
@@ -27,7 +27,7 @@ void Subscriber::OnMessage(const Message& msg)
 
 void Subscriber::Shutdown()
 {
-    Logger::GetInstance().Log("INFO ", GetName() + " “—Õ£÷π∂©‘ƒ " + topic_);
+    Logger::GetInstance().Log("INFO ", GetName() + " Â∑≤ÂÅúÊ≠¢ËÆ¢ÈòÖ " + topic_);
     SetInitialized(false);
 }
 

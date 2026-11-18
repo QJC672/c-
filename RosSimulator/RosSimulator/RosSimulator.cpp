@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include <thread>
 #include <chrono>
@@ -11,29 +11,29 @@
 
 int main()
 {
-    Publisher tempPub("ÎÂ¶È´«¸ĞÆ÷", "sensor/temperature");
-    Publisher humPub("Êª¶È´«¸ĞÆ÷", "sensor/humidity");
-    Publisher presPub("ÆøÑ¹´«¸ĞÆ÷", "sensor/pressure");
+    Publisher tempPub("æ¸©åº¦ä¼ æ„Ÿå™¨", "sensor/temperature");
+    Publisher humPub("æ¹¿åº¦ä¼ æ„Ÿå™¨", "sensor/humidity");
+    Publisher presPub("æ°”å‹ä¼ æ„Ÿå™¨", "sensor/pressure");
 
-    Subscriber tempDisplay("ÎÂ¶ÈÏÔÊ¾Æ÷A", "sensor/temperature",
+    Subscriber tempDisplay("æ¸©åº¦æ˜¾ç¤ºå™¨A", "sensor/temperature",
         [](const Message& m) {
             if (const auto* t = dynamic_cast<const TemperatureMessage*>(&m)) {
-                std::cout << "    -> ÏÔÊ¾Æ÷A ´¦Àí: " << t->GetValue() << " " << t->GetUnit()
-                          << (t->GetValue() > 25 ? " (¸ßÎÂ!)" : " (Õı³£)") << std::endl;
+                std::cout << "    -> æ˜¾ç¤ºå™¨A å¤„ç†: " << t->GetValue() << " " << t->GetUnit()
+                          << (t->GetValue() > 25 ? " (é«˜æ¸©!)" : " (æ­£å¸¸)") << std::endl;
             }
             else {
-                std::cout << "    -> ÏÔÊ¾Æ÷A ´¦Àí: " << m.GetContent() << std::endl;
+                std::cout << "    -> æ˜¾ç¤ºå™¨A å¤„ç†: " << m.GetContent() << std::endl;
             }
         });
 
-    Subscriber tempRecorder("ÎÂ¶È¼ÇÂ¼Æ÷B", "sensor/temperature",
+    Subscriber tempRecorder("æ¸©åº¦è®°å½•å™¨B", "sensor/temperature",
         [](const Message& m) {
-            std::cout << "    -> ¼ÇÂ¼Æ÷B ´æµµ: " << m.GetContent() << std::endl;
+            std::cout << "    -> è®°å½•å™¨B å­˜æ¡£: " << m.GetContent() << std::endl;
         });
 
-    Subscriber humDisplay("Êª¶ÈÏÔÊ¾Æ÷", "sensor/humidity",
+    Subscriber humDisplay("æ¹¿åº¦æ˜¾ç¤ºå™¨", "sensor/humidity",
         [](const Message& m) {
-            std::cout << "    -> Êª¶ÈÏÔÊ¾: " << m.GetContent() << std::endl;
+            std::cout << "    -> æ¹¿åº¦æ˜¾ç¤º: " << m.GetContent() << std::endl;
         });
 
     tempDisplay.Init();
@@ -52,32 +52,32 @@ int main()
 
     presPub.Publish("1013 hPa");
 
-    // Òì³£ÑİÊ¾
-    std::cout << "\n===== Òì³£´¦ÀíÑİÊ¾ =====" << std::endl;
+    // å¼‚å¸¸æ¼”ç¤º
+    std::cout << "\n===== å¼‚å¸¸å¤„ç†æ¼”ç¤º =====" << std::endl;
 
-    // 1£º¿Õ½ÚµãÃû
+    // 1ï¼šç©ºèŠ‚ç‚¹å
     try {
         Publisher badNode("", "sensor/x");
-        std::cout << "ÕâĞĞ²»¸Ã³öÏÖ" << std::endl;
+        std::cout << "è¿™è¡Œä¸è¯¥å‡ºç°" << std::endl;
     }
     catch (const RosException& e) {
-        Logger::GetInstance().Error(std::string("ÒÑÀ¹½Ø -> ") + e.what());
+        Logger::GetInstance().Error(std::string("å·²æ‹¦æˆª -> ") + e.what());
     }
 
-    // 2£º¿ÕÏûÏ¢ÄÚÈİ
+    // 2ï¼šç©ºæ¶ˆæ¯å†…å®¹
     try {
         tempPub.Publish("");
     }
     catch (const RosException& e) {
-        Logger::GetInstance().Error(std::string("ÒÑÀ¹½Ø -> ") + e.what());
+        Logger::GetInstance().Error(std::string("å·²æ‹¦æˆª -> ") + e.what());
     }
 
-    // 3£ºÖØ¸´×¢²á
+    // 3ï¼šé‡å¤æ³¨å†Œ
     try {
         tempPub.Init();
     }
     catch (const RosException& e) {
-        Logger::GetInstance().Error(std::string("ÒÑÀ¹½Ø -> ") + e.what());
+        Logger::GetInstance().Error(std::string("å·²æ‹¦æˆª -> ") + e.what());
     }
 
     ROS::GetInstance().ShutdownAll();

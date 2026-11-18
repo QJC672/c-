@@ -1,16 +1,16 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Node.h"
 #include <string>
 
-class Message;          // Ç°ÖÃÉùÃ÷£ºPublish µÄÖØÔØ²ÎÊıÓÃµ½
+class Message;          // å‰ç½®å£°æ˜ï¼šPublish çš„é‡è½½å‚æ•°ç”¨åˆ°
 class Publisher : public Node {
 public:
     Publisher(const std::string& name, const std::string& topic);
 
     void Init() override;
     void Publish(const std::string& data);
-    void Publish(const Message& msg);      // ÖØÔØ£ºÖ±½Ó·¢ËÍÒÑ¹¹ÔìºÃµÄÏûÏ¢
+    void Publish(const Message& msg);      // é‡è½½ï¼šç›´æ¥å‘é€å·²æ„é€ å¥½çš„æ¶ˆæ¯
     void Shutdown() override;
 
     const std::string& GetTopic() const;

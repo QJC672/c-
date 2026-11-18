@@ -1,15 +1,15 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Message.h"
 #include <string>
 #include <sstream>
 #include <iomanip>
 
-// ×Ô¶¨ÒåÏûÏ¢ÀàĞÍ£ºÔÚ Message »ù´¡ÉÏĞ¯´ø½á¹¹»¯µÄÎÂ¶ÈÊı¾İ£¨¼Ó·ÖÏî 10.3£©
+// è‡ªå®šä¹‰æ¶ˆæ¯ç±»å‹ï¼šåœ¨ Message åŸºç¡€ä¸Šæºå¸¦ç»“æ„åŒ–çš„æ¸©åº¦æ•°æ®ï¼ˆåŠ åˆ†é¡¹ 10.3ï¼‰
 class TemperatureMessage : public Message {
 public:
     TemperatureMessage(double value, const std::string& unit)
-        : Message(FormatValue(value) + " " + unit)   // ÄÚÈİ×Ö·û´®×Ô¶¯Æ´×°
+        : Message(FormatValue(value) + " " + unit)   // å†…å®¹å­—ç¬¦ä¸²è‡ªåŠ¨æ‹¼è£…
         , value_(value)
         , unit_(unit)
     {
@@ -19,7 +19,7 @@ public:
     const std::string& GetUnit() const { return unit_; }
 
 private:
-    // °Ñ 21.100000 ¸ñÊ½»¯³É 21.1
+    // æŠŠ 21.100000 æ ¼å¼åŒ–æˆ 21.1
     static std::string FormatValue(double value)
     {
         std::ostringstream oss;

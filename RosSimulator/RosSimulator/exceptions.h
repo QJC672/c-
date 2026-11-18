@@ -1,9 +1,9 @@
-#pragma once
+ï»¿#pragma once
 
 #include <stdexcept>
 #include <string>
 
-// ¢Ù »ùÀà
+// â‘  åŸºç±»
 class RosException : public std::runtime_error {
 public:
     explicit RosException(const std::string& msg)
@@ -12,7 +12,7 @@ public:
     }
 };
 
-// ¢Ú ¿ÕÃû¡¢ÖØ¸´×¢²á¡¢¿ÕÖ¸Õë
+// â‘¡ ç©ºåã€é‡å¤æ³¨å†Œã€ç©ºæŒ‡é’ˆ
 class NodeException : public RosException {
 public:
     explicit NodeException(const std::string& msg)
@@ -21,7 +21,7 @@ public:
     }
 };
 
-// ¢Û ¿Õ»°ÌâÃû
+// â‘¢ ç©ºè¯é¢˜å
 class TopicException : public RosException {
 public:
     explicit TopicException(const std::string& msg)
@@ -30,7 +30,7 @@ public:
     }
 };
 
-// ¢Ü ¿ÕÄÚÈİ
+// â‘£ ç©ºå†…å®¹
 class MessageException : public RosException {
 public:
     explicit MessageException(const std::string& msg)

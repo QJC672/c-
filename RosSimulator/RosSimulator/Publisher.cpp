@@ -1,4 +1,4 @@
-#include "Publisher.h"
+Ôªø#include "Publisher.h"
 #include "ROS.h"
 #include "Message.h"
 #include <iostream>
@@ -13,27 +13,27 @@ void Publisher::Init()
 {
     ROS::GetInstance().RegisterPublisher(topic_, this);
     SetInitialized(true);
-    Logger::GetInstance().Log("INFO ", GetName() + " ∑¢≤ºª∞Ã‚ " + topic_);
+    Logger::GetInstance().Log("INFO ", GetName() + " ÂèëÂ∏ÉËØùÈ¢ò " + topic_);
 }
 
 void Publisher::Publish(const std::string& data)
 {
-    Publish(Message(data));        // ∏¥”√÷ÿ‘ÿ∞Ê±æ£∫◊÷∑˚¥Æœ»∞¸◊∞≥… Message
+    Publish(Message(data));        // Â§çÁî®ÈáçËΩΩÁâàÊú¨ÔºöÂ≠óÁ¨¶‰∏≤ÂÖàÂåÖË£ÖÊàê Message
 }
 
 void Publisher::Publish(const Message& msg)
 {
     if (!IsInitialized()) {
-        Logger::GetInstance().Log("WARN ", GetName() + " …–Œ¥ Init£¨œ˚œ¢±ª∂™∆˙");
+        Logger::GetInstance().Log("WARN ", GetName() + " Â∞öÊú™ InitÔºåÊ∂àÊÅØË¢´‰∏¢ÂºÉ");
         return;
     }
-    Logger::GetInstance().Log("INFO ", GetName() + " ∑¢≤º -> " + topic_ + " : " + msg.GetContent());
+    Logger::GetInstance().Log("INFO ", GetName() + " ÂèëÂ∏É -> " + topic_ + " : " + msg.GetContent());
     ROS::GetInstance().Publish(topic_, msg);
 }
 
 void Publisher::Shutdown()
 {
-    Logger::GetInstance().Log("INFO ", GetName() + " “—Õ£÷π∑¢≤º " + topic_);
+    Logger::GetInstance().Log("INFO ", GetName() + " Â∑≤ÂÅúÊ≠¢ÂèëÂ∏É " + topic_);
     SetInitialized(false);
 }
 

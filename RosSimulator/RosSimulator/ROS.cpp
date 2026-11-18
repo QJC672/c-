@@ -1,4 +1,4 @@
-#include "ROS.h"
+ï»¿#include "ROS.h"
 #include "Publisher.h"
 #include "Subscriber.h"
 #include "Message.h"
@@ -16,17 +16,17 @@ ROS& ROS::GetInstance()
 void ROS::RegisterPublisher(const std::string& topic, Publisher* p)
 {
     if (topic.empty()) {
-        throw TopicException("»°ÌâÃû²»ÄÜÎª¿Õ");
+        throw TopicException("è¯é¢˜åä¸èƒ½ä¸ºç©º");
     }
     if (p == nullptr) {
-        throw NodeException("·¢²¼ÕßÖ¸Õë²»ÄÜÎª¿Õ");
+        throw NodeException("å‘å¸ƒè€…æŒ‡é’ˆä¸èƒ½ä¸ºç©º");
     }
 
     std::vector<Publisher*>& list = publishers_[topic];
 
     for (Publisher* item : list) {
         if (item == p) {
-            throw NodeException("Í¬Ò»·¢²¼Õß²»ÄÜÖØ¸´×¢²áÍ¬Ò»»°Ìâ");
+            throw NodeException("åŒä¸€å‘å¸ƒè€…ä¸èƒ½é‡å¤æ³¨å†ŒåŒä¸€è¯é¢˜");
         }
     }
     list.push_back(p);
@@ -35,17 +35,17 @@ void ROS::RegisterPublisher(const std::string& topic, Publisher* p)
 void ROS::RegisterSubscriber(const std::string& topic, Subscriber* s)
 {
     if (topic.empty()) {
-        throw TopicException("»°ÌâÃû²»ÄÜÎª¿Õ");
+        throw TopicException("è¯é¢˜åä¸èƒ½ä¸ºç©º");
     }
     if (s == nullptr) {
-        throw NodeException("¶©ÔÄÕßÖ¸Õë²»ÄÜÎª¿Õ");
+        throw NodeException("è®¢é˜…è€…æŒ‡é’ˆä¸èƒ½ä¸ºç©º");
     }
 
     std::vector<Subscriber*>& list = subscribers_[topic];
 
     for (Subscriber* item : list) {
         if (item == s) {
-            throw NodeException("Í¬Ò»¶©ÔÄÕß²»ÄÜÖØ¸´×¢²áÍ¬Ò»»°Ìâ");
+            throw NodeException("åŒä¸€è®¢é˜…è€…ä¸èƒ½é‡å¤æ³¨å†ŒåŒä¸€è¯é¢˜");
         }
     }
     list.push_back(s);
@@ -87,7 +87,7 @@ void ROS::Publish(const std::string& topic, const Message& msg)
 
     if (it == subscribers_.end() || it->second.empty()) {
         Logger::GetInstance().Log("WARN ",
-            "»°Ìâ " + topic + " ÔİÎŞ¶©ÔÄÕß£¬ÏûÏ¢¶ªÆú: " + msg.GetContent());
+            "è¯é¢˜ " + topic + " æš‚æ— è®¢é˜…è€…ï¼Œæ¶ˆæ¯ä¸¢å¼ƒ: " + msg.GetContent());
         return;
     }
 
@@ -118,5 +118,5 @@ void ROS::ShutdownAll()
 
     publishers_.clear();
     subscribers_.clear();
-    Logger::GetInstance().Log("INFO ", "ÖĞÊàÒÑ¹Ø±Õ£¬×¢²á±íÒÑÇå¿Õ");
+    Logger::GetInstance().Log("INFO ", "ä¸­æ¢å·²å…³é—­ï¼Œæ³¨å†Œè¡¨å·²æ¸…ç©º");
 }

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <string>
 #include "exceptions.h"
@@ -9,7 +9,7 @@ public:
         : name_(name), initialized_(false)
     {
         if (name.empty()) {
-            throw NodeException("½ÚµãÃû²»ÄÜÎª¿Õ");
+            throw NodeException("èŠ‚ç‚¹åä¸èƒ½ä¸ºç©º");
         }
     }
 
